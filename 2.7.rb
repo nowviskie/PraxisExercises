@@ -1,7 +1,7 @@
 class Person
-  def initialize
-    @firstname = "Thomas"
-    @lastname = "Jefferson"
+  def initialize(first, last)
+    @firstname = first
+    @lastname = last
   end
 
   def to_s
@@ -10,5 +10,5 @@ class Person
 
 end
 
-TJ = Person.new
+TJ = Person.new("Thomas", "Jefferson")
 puts TJ.to_s
