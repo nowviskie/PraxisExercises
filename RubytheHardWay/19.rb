@@ -2,7 +2,8 @@ def chicken_n_biscuits(chickens, biscuits)
   puts "You have #{chickens} chickens!"
   puts "You have #{biscuits} biscuits!"
   if
-    biscuits > 0
+    biscuits > 0   
+    # assuming you always have chickens. You always have chickens, right?
   puts "You have chicken'n'biscuits!\n\n"
   else
     puts "So sad."
