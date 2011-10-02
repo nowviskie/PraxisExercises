@@ -21,9 +21,9 @@ end
 
 def dragon_room()
   puts "There's a dragon here!"
-  puts "He's lying on a pile of gemstones"
+  puts "He's lying on a pile of gemstones."
   puts "And he's also blocking the door."
-  puts "How are you going to move the dragon? (Hint: he looks ticklish.)"
+  puts "Are you going to take the gemstones or try to move the dragon? (Hint: he looks ticklish.)"
   dragon_moved = false
 
   while true
@@ -34,7 +34,7 @@ def dragon_room()
     elsif next_move == "tickle him" and not dragon_moved
       puts "The dragon rises slowly and lumbers away from the door. You can exit now."
       dragon_moved = true
-    elsif next_move.include? "take" and dragon_moved
+    elsif next_move.include? "gemstones" and dragon_moved
       dead("Angered, the dragon burns greedy little you to a crisp.")
     elsif next_move == "exit" and dragon_moved
       gold_room()
