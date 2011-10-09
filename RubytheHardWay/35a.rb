@@ -4,8 +4,12 @@ def prompt()
   print "Your turn! What do you do? > "
 end
 
+def huh()
+  puts "\nI don't understand you. Please try again."
+end
+
 def gold_room()
-  puts "You've found Poseidon's treasure cave! How many treasures will you take?"
+  puts "\nYou've found Poseidon's treasure cave! How many treasures will you take?"
 
  def prompt()
    print "Type a number. > "
@@ -15,19 +19,19 @@ def gold_room()
     how_much = next_move.to_i()
 
   if how_much.between?(1, 49)
-    puts "Your treasure is light, but very valuable. You make it safely back to the surface!" 
+    puts "\nYour treasure is light, but very valuable. You make it safely back to the surface!" 
     puts "GAME OVER. YOU WIN. (You can play again, if you want to.)"
     Process.exit(0)
   elsif how_much.between?(-100000000000000000, 0)
-    puts "You're a fool! But you make it safely back to the surface."
+    puts "\nYou're a fool! But you make it safely back to the surface."
     Process.exit(0)
   else
-    dead("The treasure is too heavy. You swim slowly, and run out of air.")
+    dead("\nThe treasure is too heavy. You swim slowly, and run out of air.")
   end
 end
 
 def eel_cave()
-  puts "In this cave, there are many eels in a pit!"
+  puts "\nIn this cave, there are many eels in a pit!"
   puts "They are swimming around a treasure chest. You also see a door."
   puts "You have one depth charge. Do you throw it at the eels? Do you try to open the chest? Do you try to open the door?"
   eels_moved = false
@@ -37,14 +41,14 @@ def eel_cave()
     prompt; next_move = gets.chomp
 
     if next_move.include? "chest"
-      dead("The eels kill you with an electric shock.")
+      dead("\nThe eels kill you with an electric shock.")
     elsif next_move.include? "door"
-      dead("An eel spots you and strikes!")
+      dead("\nAn eel spots you and strikes!")
     elsif next_move.include? "charge"
-      puts "You throw the charge and quickly take cover. The eels are frightened by the blast and swim away."
+      puts "\nYou throw the charge and quickly take cover. The eels are frightened by the blast and swim away."
       eels_moved = true
     else
-      puts "I don't understand you. Try again."
+      huh()
     end
   end
 
@@ -52,22 +56,22 @@ def eel_cave()
     prompt; next_move = gets.chomp
 
     if next_move.include? "chest"
-       puts "Inside the chest you find a key. You take it!"
+       puts "\nInside the chest you find a key. You take it!"
        chest_open = true
     elsif next_move.include? "door"
-      puts "The door is locked!"
+      puts "\nThe door is locked!"
     else
-      puts "I don't understand you. Try again."
+      huh()
     end
 
       while chest_open == true
         prompt; next_move = gets.chomp
 
-      if next_move.include? "door" or "key"
-         puts "You unlock the door. You can go through!"
+      if next_move.include? "door"
+         puts "\nYou unlock the door. You can go through!"
          gold_room()
       else
-        puts "I don't understand you. Try again."
+        huh()
       end
    end
   end
@@ -76,18 +80,18 @@ def eel_cave()
 end
 
 def kraken_cave()
-  puts "In this cave, you see a gigantic, black, horrifying kraken!"
+  puts "\nIn this cave, you see a gigantic, black, horrifying kraken!"
   puts "He tries to grab you with his tentacles."
   puts "Do you swim away or stay to fight?"
 
   prompt; next_move = gets.chomp
 
-  if next_move.include? "swim" or "away"
+  if next_move.include? "swim"
     start()
   elsif next_move.include? "fight"
-    dead("The kraken raises one tentacle and strangles you like a boa constrictor.")
+    dead("\nThe kraken raises one tentacle and strangles you like a boa constrictor.")
   else
-    puts "You try that, but it doesn't work."
+    puts "\nYou try that, but it doesn't work."
     kraken_cave()
   end
 end
@@ -98,7 +102,7 @@ def dead(why)
 end
 
 def start()
-  puts "You are a diver in a deep, dark sea."
+  puts "\nYou are a diver in a deep, dark sea."
   puts "There's a cave to your left and a cave to your right."
 
   prompt; next_move = gets.chomp
@@ -108,7 +112,7 @@ def start()
   elsif next_move.include? "right"
     kraken_cave()
   else
-    dead("Oh, no! A rock falls from the surface and hits your oxygen tank. (Try swimming left or right next time.)")
+    dead("\nOh, no! A rock falls from the surface and hits your oxygen tank. (Try swimming left or right next time.)")
   end
 end
 
